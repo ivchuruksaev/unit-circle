@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f4f7f3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Круг знаний">
 <title>Круг знаний — тренажёр единичной окружности</title>
 <meta name="description" content="Тренажёр единичной окружности: углы в градусах и радианах, sin, cos, tg, отрицательные углы, контрольная с итогом для учителя.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23216b53'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='white' stroke-width='2.5'/%3E%3Ccircle cx='23.8' cy='11.5' r='2.6' fill='white'/%3E%3C/svg%3E">
@@ -9,7 +9,7 @@
 :root{--ink:#20302e;--muted:#637571;--paper:#f4f7f3;--line:#dce5dd;--green:#216b53;--soft:#e7f2e9;--red:#a44435;--blue:#4266a7;--amber:#b7791f}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}button,select,input{font:inherit}button{cursor:pointer}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #d89131;outline-offset:3px}button:disabled,select:disabled{cursor:default;opacity:.5}
 header{max-width:1180px;margin:auto;padding:30px 28px 20px;display:flex;justify-content:space-between;gap:20px;align-items:center}.brand{display:flex;align-items:center;gap:12px}.logo{background:var(--green);color:white;border-radius:15px;width:46px;height:46px;display:grid;place-items:center;font:30px Georgia}.brand strong{font-size:20px}.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}.muted{color:var(--muted)}.tiny{font-size:13px}
 main{max-width:1180px;margin:auto;padding:0 28px 40px}h1{font-size:clamp(27px,4vw,42px);letter-spacing:-.035em;line-height:1.16;margin:16px 0 12px}h2{font-size:25px;line-height:1.3;margin:12px 0}p{margin:8px 0}.intro{margin-bottom:24px;max-width:760px}
-.layout{display:grid;grid-template-columns:minmax(0,1.32fr) minmax(320px,1fr);gap:22px;align-items:start}.panel{background:white;border:1px solid var(--line);border-radius:24px;padding:24px}.diagram-panel{padding:20px}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.layout{display:grid;grid-template-columns:minmax(0,1.32fr) minmax(320px,1fr);grid-template-areas:"circle settings" "circle task" "circle answer" "circle actions" "circle summary" "circle stats";grid-template-rows:repeat(5,auto) 1fr;column-gap:22px}.g-settings{grid-area:settings}.g-task{grid-area:task}.g-circle{grid-area:circle;align-self:start}.g-answer{grid-area:answer}.g-actions{grid-area:actions}.g-summary{grid-area:summary}.g-stats{grid-area:stats;align-self:start}.side{background:white;border:1px solid var(--line);border-width:0 1px;padding:0 24px}.side-first{border-top-width:1px;border-radius:24px 24px 0 0;padding-top:20px}.side-last{border-bottom-width:1px;border-radius:0 0 24px 24px;padding-bottom:20px}#settings summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px;font-weight:600;cursor:pointer}#settings summary::-webkit-details-marker{display:none}#settings summary:after{content:"\25BE";color:var(--muted);transition:transform .15s}#settings:not([open]) summary:after{transform:rotate(-90deg)}#settings[open] .settings-sum{display:none}.settings-sum{font-size:13px;font-weight:400;color:var(--muted);flex:1;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#settings[open] summary{margin-bottom:12px}.unit-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px}.g-task{padding-top:4px}.g-answer .options{margin-top:4px}.panel{background:white;border:1px solid var(--line);border-radius:24px;padding:24px}.diagram-panel{padding:16px 20px}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .switch{display:flex;background:var(--paper);border-radius:12px;padding:4px}.switch button{background:transparent;border:0;border-radius:9px;padding:7px 11px;color:var(--muted);font-size:14px}.switch button[aria-pressed=true]{background:white;color:var(--green);box-shadow:0 1px 4px #20302e15}
 .circle{position:relative;width:100%;aspect-ratio:1;max-width:620px;margin:12px auto}.circle svg{width:100%;height:100%;display:block}
 .point{position:absolute;transform:translate(-50%,-50%);width:34px;height:34px;display:grid;place-items:center;padding:0;border:0;border-radius:50%;background:transparent}.point:disabled{opacity:1}.point:before{content:"";width:11px;height:11px;border:2px solid #6a8478;background:white;border-radius:50%}.point:not(:disabled):hover:before{width:15px;height:15px;background:var(--soft)}.point.selected:before{background:var(--green);border-color:var(--green);width:18px;height:18px;box-shadow:0 0 0 5px #216b5315}.point.correct:before{background:var(--green);border-color:var(--green);width:18px;height:18px}.point.correct:after{content:'✓';position:absolute;color:white;font-size:13px;font-weight:700}.point.wrong:before{background:var(--red);border-color:var(--red);width:18px;height:18px}.point.wrong:after{content:'×';position:absolute;color:white;font-size:16px}.point.target:before{background:var(--blue);border-color:var(--blue);width:18px;height:18px}
@@ -18,16 +18,24 @@ main{max-width:1180px;margin:auto;padding:0 28px 40px}h1{font-size:clamp(27px,4v
 .controls{display:grid;grid-template-columns:1fr 1fr;gap:12px}label{display:block;font-size:13px;color:var(--muted)}select,input[type=text]{width:100%;padding:10px 9px;border:1px solid var(--line);border-radius:10px;background:white;color:var(--ink);margin-top:5px}
 .checks{display:flex;flex-wrap:wrap;gap:6px 18px;margin:12px 0 4px}.check{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--ink)}.check input{accent-color:var(--green);width:18px;height:18px;margin:0}
 .test-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0 18px;padding:12px 14px;background:var(--paper);border-radius:14px}.test-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 18px;padding:10px 14px;background:#eef2fb;border-radius:14px;font-size:14px}.dots{display:flex;gap:5px;flex-wrap:wrap}.dots i{width:12px;height:12px;border-radius:50%;background:#d5dce9;display:block}.dots i.ok{background:var(--green)}.dots i.no{background:var(--red)}.dots i.now{background:var(--blue)}
-.question{font-size:32px;color:var(--green);font-weight:650;margin:16px 0}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{border:1px solid var(--line);border-radius:12px;background:white;color:var(--ink);padding:11px 17px;font-weight:600}.primary{background:var(--green);border-color:var(--green);color:white}.subtle{background:var(--paper)}.small{padding:6px 11px;font-size:13px}
+.question{font-size:32px;color:var(--green);font-weight:650;margin:16px 0}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.g-actions .actions{margin-top:6px}button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}.feedback{scroll-margin:90px 0}.short{display:none}@media(max-width:850px){.short{display:inline}}.btn{border:1px solid var(--line);border-radius:12px;background:white;color:var(--ink);padding:11px 17px;font-weight:600}.primary{background:var(--green);border-color:var(--green);color:white}.subtle{background:var(--paper)}.small{padding:6px 11px;font-size:13px}
 .feedback{border-radius:14px;padding:15px;margin-top:18px;background:var(--paper);font-size:14px}.feedback.good{background:var(--soft)}.feedback.bad{background:#fff0e9}.feedback strong{display:block;font-size:16px;margin-bottom:4px}.feedback .sign{color:var(--red);font-weight:600}
-.selection{font-size:14px;min-height:25px;margin-top:15px;color:var(--muted)}.options{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}.option{padding:10px 5px;border:1px solid var(--line);border-radius:10px;background:white;min-height:44px;color:var(--ink)}.option.wide{grid-column:span 2}.option[aria-pressed=true]{border-color:var(--green);background:var(--soft);color:var(--green)}.option.right{border-color:var(--green);background:var(--green);color:white}.option.miss{border-color:var(--red);background:#fff0e9;color:var(--red)}
+.selection{font-size:14px;min-height:25px;margin-top:10px;color:var(--muted)}.options{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}.option{padding:10px 5px;border:1px solid var(--line);border-radius:10px;background:white;min-height:44px;color:var(--ink)}.option.wide{grid-column:span 2}.option:disabled{opacity:1}.option:disabled:not(.right):not(.miss){color:var(--muted)}.option[aria-pressed=true]{border-color:var(--green);background:var(--soft);color:var(--green)}.option.right{border-color:var(--green);background:var(--green);color:white}.option.miss{border-color:var(--red);background:#fff0e9;color:var(--red)}
 .stats{display:flex;gap:22px;flex-wrap:wrap;margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}.stat strong{display:block;font-size:23px}.stat span{font-size:12px;color:var(--muted)}
 .score{font-size:54px;font-weight:700;color:var(--green);letter-spacing:-.03em;line-height:1.1;margin:10px 0 2px}.errors{margin:14px 0;padding:0;list-style:none;font-size:14px}.errors li{padding:9px 12px;border-radius:10px;background:#fff0e9;margin-bottom:6px}.errors li b{font-weight:650}
 .progress{margin-top:22px}.chips{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;margin-top:14px}.chip{border-radius:12px;padding:8px 4px;text-align:center;background:var(--paper);border:1px solid var(--line);font-size:13px;line-height:1.3}.chip b{display:block;font-size:14px}.chip span{color:var(--muted);font-size:12px}.chip.bad{background:#fbe3dc;border-color:#efc1b3}.chip.mid{background:#fbf0d9;border-color:#ecd7a8}.chip.good{background:var(--soft);border-color:#bcd9c4}.chip-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:12px}.chip-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
-details{margin-top:22px;background:white;border:1px solid var(--line);border-radius:20px;padding:18px 22px}summary{cursor:pointer;font-weight:600}.reference{overflow:auto;margin-top:16px}table{width:100%;border-collapse:collapse;font-size:14px;text-align:center}th,td{padding:9px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-size:12px}tr:last-child td{border:0}.note{margin-top:14px;font-size:14px;color:var(--muted)}
+#reference{margin-top:22px;background:white;border:1px solid var(--line);border-radius:20px;padding:18px 22px}summary{cursor:pointer;font-weight:600}.reference{overflow:auto;margin-top:16px}table{width:100%;border-collapse:collapse;font-size:14px;text-align:center}th,td{padding:9px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-size:12px}tr:last-child td{border:0}.note{margin-top:14px;font-size:14px;color:var(--muted)}
 .link-button{border:0;background:transparent;color:var(--muted);font-size:12px;text-decoration:underline;padding:8px 0}.study{display:flex;gap:9px;align-items:center;font-size:13px;margin-top:14px}.study input{accent-color:var(--green);width:18px;height:18px}.hidden,[hidden]{display:none!important}footer{margin-top:20px;color:var(--muted);font-size:12px}kbd{font:12px ui-monospace,monospace;background:var(--paper);border:1px solid var(--line);border-radius:5px;padding:1px 5px}
-@media(max-width:850px){.layout{grid-template-columns:1fr}.circle{max-width:540px}.angle-label{font-size:13px}header{padding-top:20px}.intro{margin-bottom:20px}.chips{grid-template-columns:repeat(4,1fr)}}
-@media(max-width:460px){header,main{padding-left:14px;padding-right:14px}.panel{padding:18px}.diagram-panel{padding:12px}.brand strong{font-size:17px}header>.tiny{display:none}.angle-label{font-size:11px}.point{width:30px;height:30px}.controls{grid-template-columns:1fr}.question{font-size:28px}.stats{gap:16px}.axis-label{font-size:11px}.btn{padding:11px 13px}.switch button{padding:6px 8px;font-size:13px}.kbd-tip{display:none}}
+@media(max-width:850px){.layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"settings" "task" "circle" "answer" "actions" "summary" "stats";grid-template-rows:none;row-gap:12px}
+.side,.side-first,.side-last{border-width:1px;border-radius:20px;padding:16px 18px}.intro{display:none}header{padding:14px 16px 10px}header>.tiny{display:none}main{padding:0 12px 30px}
+.g-task{padding:14px 18px 12px;scroll-margin-top:8px}.g-task h2{display:none}.question{font-size:30px;margin:4px 0 2px}.instruction{font-size:14px;margin:4px 0 0}
+.diagram-panel{padding:6px 8px 10px;border-radius:20px}.circle{max-width:440px;margin:0 auto}.angle-label{font-size:12px}.legend{font-size:12px;gap:10px}.study{margin:8px 6px 0;font-size:13px}
+.g-answer.empty{display:none}.g-answer{padding:12px}.options{gap:7px}.option{min-height:50px;font-size:17px}.selection{display:none}
+.g-actions{position:sticky;bottom:0;z-index:5;background:#f4f7f3e8;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:0;border-top:1px solid var(--line);border-radius:0;margin:0 -12px;padding:10px 12px calc(10px + env(safe-area-inset-bottom))}
+.g-actions .actions{margin:0;flex-wrap:nowrap;gap:8px}.g-actions .btn{padding:13px 10px;font-size:15px}.g-actions .primary{flex:1 1 auto}.g-actions .btn:disabled{display:none}.g-actions .long,.kbd-tip{display:none}.layout.ans-first{grid-template-areas:"settings" "task" "answer" "circle" "actions" "summary" "stats"}.test-row{background:none;padding:0;margin:12px 0 0}.test-row .tiny{display:none}.test-row .btn{width:100%;padding:10px}
+.test-row{margin:10px 0 0;padding:10px 12px}.test-bar{margin-bottom:10px}.controls{grid-template-columns:1fr 1fr}.chips{grid-template-columns:repeat(4,1fr)}.stats{margin-top:0;padding-top:0;border:0;gap:16px;justify-content:space-between}.stat strong{font-size:20px}
+.check{font-size:15px;min-height:32px}.score{font-size:46px}}
+@media(max-width:460px){.brand strong{font-size:17px}.logo{width:38px;height:38px;font-size:24px;border-radius:12px}.point{width:30px;height:30px}.angle-label{font-size:11px}.axis-label{font-size:11px}.controls{grid-template-columns:1fr}.switch button{padding:6px 8px;font-size:13px}.unit-row .tiny{display:none}.unit-row{justify-content:flex-start}.stats .stat span{font-size:11px}.legend{display:none}}
 @media(prefers-reduced-motion:no-preference){.point:before{transition:background .15s,width .15s,height .15s}}
 </style>
 </head>
@@ -35,32 +43,40 @@ details{margin-top:22px;background:white;border:1px solid var(--line);border-rad
 <header><div class="brand"><div class="logo" aria-hidden="true">◉</div><div><strong>Круг знаний</strong><div class="muted tiny">Единичная окружность</div></div></div><span class="tiny muted">Практика без конца · в своём темпе</span></header>
 <main>
 <div class="intro"><div class="eyebrow">Увидеть → вспомнить → отметить</div><h1>Все углы на своих местах.</h1><p class="muted">Тренируй углы, синусы, косинусы и тангенсы на одной окружности. После каждого ответа — объяснение, а углы, в которых были ошибки, будут попадаться чаще. Когда почувствуешь уверенность — пройди контрольную и отправь результат учителю.</p></div>
-<div class="layout">
-<section class="panel diagram-panel" aria-label="Схема единичной окружности">
-<div class="toolbar"><strong>Единичная окружность</strong><div class="switch" role="group" aria-label="Единицы углов"><button data-unit="degrees">Градусы</button><button data-unit="radians">Радианы</button><button data-unit="mixed">Вперемешку</button></div></div>
+<div class="layout" id="layout">
+<section class="side side-first g-settings" aria-label="Настройки">
+<details id="settings" open><summary><span>Настройки</span><span id="settings-sum" class="settings-sum"></span></summary>
+<div class="controls"><label>Что тренируем<select id="mode"><option value="mixed">Всё вперемешку</option><option value="angle">Угол → точка на окружности</option><option value="value">Угол → значение (sin, cos…)</option><option value="reverse">Точка → значение</option><option value="eq">Значение → все точки (уравнения)</option></select></label><label>Набор углов<select id="level"><option value="all">Все 16 основных углов</option><option value="first">Первая четверть: 0°–90°</option><option value="axes">Начать с осей</option></select></label></div>
+<div class="unit-row"><span class="tiny muted">Углы:</span><div class="switch" role="group" aria-label="Единицы углов"><button data-unit="degrees">Градусы</button><button data-unit="radians">Радианы</button><button data-unit="mixed">Вперемешку</button></div></div>
+<div class="checks"><label class="check"><input type="checkbox" id="opt-tg">Добавить тангенс</label><label class="check"><input type="checkbox" id="opt-ext">Отрицательные углы и больше 360°</label></div>
+</details>
+<div class="test-row" id="test-row"><button id="start-test" class="btn">Контрольная: 10 заданий</button><span class="tiny muted">без подсказок, в конце — итог для учителя</span></div>
+</section>
+<section class="side g-task" id="task-card" aria-label="Задание">
+<div class="test-bar" id="test-bar" hidden><div><b id="test-count"></b><div class="dots" id="dots"></div></div><button id="abort-test" class="btn small">Прервать</button></div>
+<div id="task-label" class="eyebrow">Задание 1</div><h2 id="task-title"></h2><div id="question" class="question"></div><p id="instruction" class="muted instruction"></p>
+</section>
+<section class="panel diagram-panel g-circle" aria-label="Схема единичной окружности">
 <div id="circle" class="circle"><svg viewBox="0 0 600 600" aria-label="Окружность радиуса 1: горизонтальная координата — косинус, вертикальная — синус" role="img"><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#8ca298"/></marker></defs><g stroke="#e9eeea" stroke-width="1"><path d="M210 120V480 M390 120V480 M120 210H480 M120 390H480"/></g><circle cx="300" cy="300" r="180" fill="#f5f9f4" stroke="#a9bfb0" stroke-width="2"/><g id="rays"></g><g id="tangent"></g><g stroke="#8ca298" stroke-width="1.5" marker-end="url(#arrow)"><path d="M56 300H544"/><path d="M300 544V56"/></g><g id="projection"></g><circle cx="300" cy="300" r="3" fill="#8ca298"/><text x="286" y="320" font-size="14" fill="#637571">0</text><text x="484" y="320" font-size="13" fill="#8ca298">1</text><text x="306" y="114" font-size="13" fill="#8ca298">1</text></svg><span class="axis-label" style="right:1%;top:52%">x = cos α</span><span class="axis-label" style="left:52%;top:1%">y = sin α</span><div id="points"></div><div id="labels"></div></div>
 <div class="legend"><span>Твой выбор / верный ответ</span><span>Точка из задания</span></div>
 <label class="study"><input type="checkbox" id="study">Показывать углы (учебный режим — ответы не идут в статистику)</label>
 </section>
-<section class="panel" aria-label="Задание">
-<div class="controls"><label>Что тренируем<select id="mode"><option value="mixed">Всё вперемешку</option><option value="angle">Угол → точка на окружности</option><option value="value">Угол → значение (sin, cos…)</option><option value="reverse">Точка → значение</option><option value="eq">Значение → все точки (уравнения)</option></select></label><label>Набор углов<select id="level"><option value="all">Все 16 основных углов</option><option value="first">Первая четверть: 0°–90°</option><option value="axes">Начать с осей</option></select></label></div>
-<div class="checks"><label class="check"><input type="checkbox" id="opt-tg">Добавить тангенс</label><label class="check"><input type="checkbox" id="opt-ext">Отрицательные углы и больше 360°</label></div>
-<div class="test-row" id="test-row"><button id="start-test" class="btn">Контрольная: 10 заданий</button><span class="tiny muted">без подсказок, в конце — итог для учителя</span></div>
-<div class="test-bar" id="test-bar" hidden><div><b id="test-count"></b><div class="dots" id="dots"></div></div><button id="abort-test" class="btn small">Прервать</button></div>
-<div id="task-area">
-<div id="task-label" class="eyebrow">Задание 1</div><h2 id="task-title"></h2><div id="question" class="question"></div><p id="instruction" class="muted"></p><div id="options" class="options" hidden></div><div id="selection" class="selection" aria-live="polite"></div>
-<div class="actions"><button id="check" class="btn primary">Проверить</button><button id="next" class="btn primary" hidden>Следующее задание →</button><button id="hint" class="btn subtle">Подсказка</button><button id="reveal" class="btn">Показать ответ</button></div>
+<section class="side g-answer" id="answer-card" aria-label="Ответ">
+<div id="options" class="options" hidden></div><div id="selection" class="selection" aria-live="polite"></div>
 <div id="feedback" class="feedback" aria-live="polite" hidden></div>
-<p class="tiny muted kbd-tip"><kbd>Enter</kbd> — проверить / дальше, <kbd>1</kbd>–<kbd>9</kbd> — выбрать вариант</p>
-</div>
-<div id="summary" hidden>
+</section>
+<div class="side g-actions" id="actions-bar"><div class="actions"><button id="check" class="btn primary">Проверить</button><button id="next" class="btn primary" hidden>Дальше →</button><button id="hint" class="btn subtle">Подсказка</button><button id="reveal" class="btn"><span class="long">Показать ответ</span><span class="short">Ответ</span></button></div>
+<p class="tiny muted kbd-tip"><kbd>Enter</kbd> — проверить / дальше, <kbd>1</kbd>–<kbd>9</kbd> — выбрать вариант</p></div>
+<section class="side g-summary" id="summary" hidden>
 <div class="eyebrow">Контрольная завершена</div><div class="score" id="sum-score"></div><p id="sum-meta" class="muted"></p><div id="sum-errors"></div>
 <label>Имя (чтобы учитель понял, чей результат)<input type="text" id="student" maxlength="60" autocomplete="given-name"></label>
 <div class="actions"><button id="copy" class="btn primary">Скопировать результат</button><button id="share" class="btn" hidden>Отправить…</button></div><p id="copy-status" class="tiny muted" aria-live="polite"></p>
 <div class="actions"><button id="again" class="btn">Пройти ещё раз</button><button id="back" class="btn subtle">Вернуться к тренировке</button></div>
-</div>
+</section>
+<section class="side side-last g-stats" aria-label="Статистика">
 <div class="stats"><div class="stat"><strong id="solved">0</strong><span>верно без подсказок</span></div><div class="stat"><strong id="accuracy">—</strong><span>точность</span></div><div class="stat"><strong id="streak">0</strong><span>подряд</span></div><div class="stat"><strong id="best">0</strong><span>рекорд серии</span></div></div><button id="reset" class="link-button">Сбросить статистику</button>
-</section></div>
+</section>
+</div>
 <section class="panel progress" aria-label="Прогресс по углам"><div class="toolbar"><strong>Мой прогресс по углам</strong><span class="tiny muted">Углы с ошибками тренажёр задаёт чаще</span></div><div id="chips" class="chips"></div><div class="chip-legend"><span><i style="background:#bcd9c4"></i>85% и выше</span><span><i style="background:#ecd7a8"></i>60–84%</span><span><i style="background:#efc1b3"></i>ниже 60%</span><span><i style="background:var(--paper);border:1px solid var(--line)"></i>ещё не было</span></div></section>
 <details id="reference"><summary>Шпаргалка: углы, координаты и знаки</summary><p class="note">Точка на окружности имеет координаты <b>(cos α; sin α)</b>. Косинус — по горизонтали, синус — по вертикали, <b>tg α = sin α / cos α</b>. Угол отсчитывается от правой полуоси против часовой стрелки; отрицательный угол — по часовой. Полный оборот 360° = 2π возвращает в ту же точку.</p><p class="note">Знаки (cos; sin): I четверть (+; +), II (−; +), III (−; −), IV (+; −). Тангенс положителен в I и III четвертях. Для 0°, 30°, 45°, 60°, 90° синус: 0, 1/2, √2/2, √3/2, 1; косинус — в обратном порядке.</p><div class="reference"><table><thead><tr><th>Градусы</th><th>Радианы</th><th>cos α · x</th><th>sin α · y</th><th>tg α</th></tr></thead><tbody id="table"></tbody></table></div></details>
 <footer>Работает и без интернета после загрузки. Статистика и прогресс сохраняются в этом браузере на этом устройстве.</footer>
@@ -75,7 +91,7 @@ const MODE_NAMES={mixed:'всё вперемешку',angle:'угол → точ
 const LEVEL_NAMES={all:'все 16 углов',first:'первая четверть',axes:'только оси'};
 const UNIT_NAMES={degrees:'градусы',radians:'радианы',mixed:'градусы и радианы'};
 const TEST_SIZE=10;
-const $=id=>document.getElementById(id);
+const $=id=>document.getElementById(id);const mq=matchMedia('(max-width:850px)');
 const store={get(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v;}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
 const freshPer=()=>DATA.map(()=>({c:0,t:0,w:0}));
 let settings=Object.assign({mode:'mixed',level:'all',unit:'degrees',tg:false,ext:false,name:''},store.get('uc-settings',{}));
@@ -83,7 +99,8 @@ let stats=Object.assign({correct:0,total:0,streak:0,best:0},store.get('uc-stats-
 let per=store.get('uc-per',null);if(!Array.isArray(per)||per.length!==DATA.length||!per.every(p=>p&&Number.isFinite(p.c)&&Number.isFinite(p.t)&&Number.isFinite(p.w)))per=freshPer();
 let task,selected=new Set(),choice=null,locked=false,assisted=false,number=0,lastKey='',test=null;
 
-function saveAll(){store.set('uc-settings',settings);store.set('uc-stats-v2',stats);store.set('uc-per',per);updateStats();}
+function updateSettingsSum(){$('settings-sum').textContent=[MODE_NAMES[settings.mode],LEVEL_NAMES[settings.level],UNIT_NAMES[settings.unit]].concat(settings.tg?['tg']:[],settings.ext?['±углы']:[]).join(' · ');}
+function saveAll(){updateSettingsSum();store.set('uc-settings',settings);store.set('uc-stats-v2',stats);store.set('uc-per',per);updateStats();}
 function random(a){return a[Math.floor(Math.random()*a.length)];}
 function gcd(a,b){return b?gcd(b,a%b):a;}
 function fmtRad(n,d){if(n===0)return'0';const s=n<0?'−':'';n=Math.abs(n);const g=gcd(n,d);n/=g;d/=g;return s+(n===1?'':n)+'π'+(d===1?'':'/'+d);}
@@ -105,7 +122,8 @@ lastKey=key;if(test)test.keys.add(key);return t;}
 
 function newTask(){if(test&&test.results.length>=TEST_SIZE){showSummary();return;}
 task=generate();number++;selected.clear();choice=null;locked=false;assisted=!test&&($('study').checked||$('reference').open);
-$('feedback').hidden=true;$('feedback').className='feedback';$('check').hidden=false;$('next').hidden=true;$('hint').disabled=false;$('reveal').disabled=false;render();}
+$('feedback').hidden=true;$('feedback').className='feedback';$('check').hidden=false;$('next').hidden=true;$('hint').disabled=false;$('reveal').disabled=false;render();
+if(mq.matches&&number>1&&$('task-card').getBoundingClientRect().top<0)$('task-card').scrollIntoView({behavior:'smooth',block:'start'});}
 
 function questionText(){const t=task;
 if(t.kind==='angle')return'α = '+fmtAngle(t.i,t.k);
@@ -125,7 +143,7 @@ $('options').querySelectorAll('button').forEach(b=>b.onclick=()=>{choice=b.datas
 $('selection').textContent=val?(choice===null?'Значение пока не выбрано.':'Выбрано: '+choice):'Выбрано точек: '+selected.size;
 $('check').disabled=val?choice===null:selected.size===0;
 if(test)renderDots();
-renderCircle();}
+syncAnswerCard();$('layout').classList.toggle('ans-first',t.kind==='value');renderCircle();}
 
 function renderCircle(){const t=task,available=pool(),show=$('study').checked||locked,val=isValueTask();const correct=locked&&!val?answersFor(t):[];
 $('points').innerHTML='';$('labels').innerHTML='';let rays='';
@@ -176,14 +194,15 @@ if(test){test.results.push({q:t.kind==='reverse'?'точка '+fmtAngle(t.i,0)+'
 let sign='';if(val&&!ok&&choice&&choice!==NONE&&rightValue()!==NONE&&choice.replace('−','')===rightValue().replace('−',''))sign='<p class="sign">Число верное, ошибка в знаке.'+quarterNote(t.i)+'</p>';
 $('feedback').hidden=false;$('feedback').className='feedback '+(ok?'good':'bad');
 $('feedback').innerHTML='<strong>'+(reveal?'Разберём ответ':ok?random(['Верно!','Отлично!','Точно!','Так держать!']):'Пока не совпало')+'</strong>'+sign+explanation()+(assisted&&!reveal?'<p>Задание с подсказкой не учитывается в точности.</p>':'');
-$('check').hidden=true;$('next').hidden=false;$('next').textContent=test&&test.results.length>=TEST_SIZE?'Посмотреть результат →':'Следующее задание →';$('hint').disabled=true;$('reveal').disabled=true;render();$('next').focus({preventScroll:true});}
+$('check').hidden=true;$('next').hidden=false;$('next').textContent=test&&test.results.length>=TEST_SIZE?'Результат →':'Дальше →';$('hint').disabled=true;$('reveal').disabled=true;render();$('next').focus({preventScroll:true});if(mq.matches)$('feedback').scrollIntoView({behavior:'smooth',block:'nearest'});}
 
 function hint(){assisted=true;render();const t=task;let text='';
 const extra=t.k?'<p>Сначала отбрось полные обороты: прибавляй или вычитай 360° (2π), пока угол не окажется между 0° и 360°.</p>':'';
 const radTip=t.unit==='radians'?'<p>π = 180°, поэтому π/6 = 30°, π/4 = 45°, π/3 = 60°, π/2 = 90°.</p>':'';
 if(t.kind==='angle')text='Начни с правой полуоси (0°) и двигайся против часовой стрелки (для отрицательного угла — по часовой). Прямой угол — четверть оборота, 180° — половина.';
 else{const fn=t.fn;text=(t.kind==='value'?'Найди точку угла на окружности, затем возьми нужную координату. ':'')+(fn==='sin'?'Синус — высота точки (y): вверху положительный, внизу отрицательный.':fn==='cos'?'Косинус — координата x: справа положительный, слева отрицательный.':'tg α = sin α / cos α. Он положителен в I и III четвертях; для 30°, 45°, 60° — √3/3, 1, √3. Если cos α = 0, тангенса нет.');}
-$('feedback').hidden=false;$('feedback').className='feedback';$('feedback').innerHTML='<strong>Подсказка</strong>'+text+extra+radTip+(t.fn!=='tg'||t.kind==='angle'?'<p>Для 0°, 30°, 45°, 60°, 90°: sin = 0, 1/2, √2/2, √3/2, 1. Для cos — тот же список в обратном порядке.</p>':'');}
+$('feedback').hidden=false;$('feedback').className='feedback';$('feedback').innerHTML='<strong>Подсказка</strong>'+text+extra+radTip+(t.fn!=='tg'||t.kind==='angle'?'<p>Для 0°, 30°, 45°, 60°, 90°: sin = 0, 1/2, √2/2, √3/2, 1. Для cos — тот же список в обратном порядке.</p>':'');syncAnswerCard();if(mq.matches)$('feedback').scrollIntoView({behavior:'smooth',block:'nearest'});}
+function syncAnswerCard(){$('answer-card').classList.toggle('empty',$('options').hidden&&$('feedback').hidden);}
 
 function updateStats(){$('solved').textContent=stats.correct;$('accuracy').textContent=stats.total?Math.round(stats.correct/stats.total*100)+'%':'—';$('streak').textContent=stats.streak;$('best').textContent=stats.best;
 $('chips').innerHTML=DATA.map((p,i)=>{const s=per[i],pct=s.t?Math.round(s.c/s.t*100):null,cls=pct===null?'':pct>=85?'good':pct>=60?'mid':'bad';const name=settings.unit==='radians'?fmtRad(p.n,p.d):p.deg+'°';
@@ -194,12 +213,13 @@ function settingsText(){return'Режим: '+MODE_NAMES[settings.mode]+' · '+LE
 function renderDots(){$('test-count').textContent='Контрольная · '+Math.min(test.results.length+(locked?0:1),TEST_SIZE)+' из '+TEST_SIZE;
 $('dots').innerHTML=Array.from({length:TEST_SIZE},(_,j)=>{const r=test.results[j];return'<i class="'+(r?(r.ok?'ok':'no'):j===test.results.length?'now':'')+'"></i>';}).join('');}
 function applyTestUI(){const on=!!test;$('hint').hidden=on;$('reveal').hidden=on;$('study').disabled=on;if(on)$('study').checked=false;$('reference').hidden=on;if(on)$('reference').open=false;
-['mode','level','opt-tg','opt-ext'].forEach(id=>$(id).disabled=on);$('test-bar').hidden=!on;$('test-row').hidden=on;$('summary').hidden=true;$('task-area').hidden=false;}
+['mode','level','opt-tg','opt-ext'].forEach(id=>$(id).disabled=on);$('test-bar').hidden=!on;$('test-row').hidden=on;setSummary(false);}
+function setSummary(on){$('summary').hidden=!on;['task-card','answer-card','actions-bar'].forEach(id=>$(id).hidden=on);}
 function startTest(){test={results:[],keys:new Set(),start:Date.now(),settings:settingsText()};number=0;applyTestUI();newTask();}
 function stopTest(){test=null;applyTestUI();newTask();}
 function fmtTime(ms){const s=Math.round(ms/1000);return(s>=60?Math.floor(s/60)+' мин ':'')+(s%60)+' с';}
 function showSummary(){test.end=test.end||Date.now();const ok=test.results.filter(r=>r.ok).length,pct=Math.round(ok/TEST_SIZE*100);
-$('task-area').hidden=true;$('summary').hidden=false;$('test-bar').hidden=true;
+setSummary(true);if(mq.matches)$('summary').scrollIntoView({behavior:'smooth',block:'start'});
 $('sum-score').textContent=ok+' из '+TEST_SIZE;
 $('sum-meta').textContent=pct+'% · время '+fmtTime(test.end-test.start)+' · '+(pct===100?'Безупречно!':pct>=80?'Хороший результат!':pct>=60?'Неплохо, но есть что повторить.':'Стоит ещё потренироваться.');
 const errs=test.results.map((r,j)=>({...r,j})).filter(r=>!r.ok);
@@ -229,11 +249,11 @@ document.querySelectorAll('[data-unit]').forEach(b=>b.onclick=()=>{settings.unit
 $('study').onchange=()=>{if($('study').checked&&!locked)assisted=true;render();};
 $('reference').ontoggle=()=>{if($('reference').open&&!locked&&!test){assisted=true;render();}};
 $('reset').onclick=()=>{if(confirm('Сбросить статистику и прогресс по углам?')){stats={correct:0,total:0,streak:0,best:0};per=freshPer();saveAll();}};
-document.addEventListener('keydown',e=>{if(e.ctrlKey||e.metaKey||e.altKey)return;const tag=e.target.tagName;if(['INPUT','SELECT','TEXTAREA','BUTTON','SUMMARY'].includes(tag)&&e.key==='Enter'||tag==='INPUT'&&e.target.type==='text'||tag==='SELECT')return;if($('task-area').hidden)return;
+document.addEventListener('keydown',e=>{if(e.ctrlKey||e.metaKey||e.altKey)return;const tag=e.target.tagName;if(['INPUT','SELECT','TEXTAREA','BUTTON','SUMMARY'].includes(tag)&&e.key==='Enter'||tag==='INPUT'&&e.target.type==='text'||tag==='SELECT')return;if(!$('summary').hidden)return;
 if(e.key==='Enter'){if(!$('next').hidden){e.preventDefault();$('next').click();}else if(!$('check').disabled){e.preventDefault();$('check').click();}}
 else if(/^[1-9]$/.test(e.key)&&isValueTask()&&!locked){const btns=$('options').querySelectorAll('button');const b=btns[+e.key-1];if(b){b.click();}}});
 $('table').innerHTML=DATA.map(p=>'<tr><td>'+p.deg+'°</td><td>'+fmtRad(p.n,p.d)+'</td><td>'+p.cos+'</td><td>'+p.sin+'</td><td>'+(p.tg===NONE?'—':p.tg)+'</td></tr>').join('')+'<tr><td>360°</td><td>2π</td><td>1</td><td>0</td><td>0</td></tr>';
-$('mode').value=settings.mode;$('level').value=settings.level;$('opt-tg').checked=settings.tg;$('opt-ext').checked=settings.ext;if(!UNIT_NAMES[settings.unit])settings.unit='degrees';syncUnitButtons();
+$('mode').value=settings.mode;$('level').value=settings.level;$('opt-tg').checked=settings.tg;$('opt-ext').checked=settings.ext;if(!UNIT_NAMES[settings.unit])settings.unit='degrees';syncUnitButtons();updateSettingsSum();if(mq.matches)$('settings').open=false;
 updateStats();newTask();
 </script>
 </body></html>
